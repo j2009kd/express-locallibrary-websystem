@@ -14,6 +14,9 @@ const helmet = require("helmet");
 
 const app = express();
 
+// Enable trust proxy when the app is behind a reverse proxy (e.g. in containerized or hosted environments).
+app.set("trust proxy", 1);
+
 // Set up rate limiter: maximum of twenty requests per minute
 const limiter = RateLimit({
   windowMs: 1 * 60 * 1000, // 10 seconds
